@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHAKE — Твой фитнес-проводник</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:radial-gradient(circle at top,#111 0%,#000 100%);
+    color:#fff;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.start-screen{
+    height:100vh;
+    background:
+    linear-gradient(to top,#000000d0,#00000080),
+    url('https://raw.githubusercontent.com/kolizeygym/pjhpto/1d14245ae770e5eb6e291582ac5a0257f99f443b/WhatsApp%20Image%202026-06-13%20at%2022.22.50.jpeg')
+    center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    animation:fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.start-button{
+    padding:20px 50px;
+    font-size:26px;
+    background:linear-gradient(45deg,#e63946,#f3722c);
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.start-button:hover{
+    transform:scale(1.05);
+}
+
+.content{
+    padding:40px 20px;
+    display:none;
+    animation:slideUp 1.2s ease;
+}
+
+@keyframes slideUp{
+    from{
+        transform:translateY(100px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+p,li{
+    font-size:20px;
+    line-height:1.6;
+}
+
+a{
+    color:#4cc9f0;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.price{
+    margin:30px 0;
+    font-size:22px;
+}
+
+.photo{
+    width:100%;
+    max-width:420px;
+    border-radius:20px;
+    margin:20px auto;
+    box-shadow:0 0 20px rgba(255,255,255,.2);
+}
+
+video{
+    margin:30px auto;
+    display:block;
+    border-radius:20px;
+    max-width:100%;
+    box-shadow:0 0 20px rgba(255,255,255,.1);
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:32px;
+    }
+
+    p,li{
+        font-size:18px;
+    }
+
+    .start-button{
+        font-size:22px;
+        padding:18px 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="start-screen">
+    <button class="start-button" onclick="startSite()">
+        🚀 Начать Трансформацию
+    </button>
+</div>
+
+<audio id="bg-music" loop>
+    <source src="https://raw.githubusercontent.com/kolizeygym/sound/a7b8b6cbae65280d5e7c31fc1cfe060501b679e9/Orange%20Sector%20%E2%80%93%20Farben%20(Slowed%20%2B%20Reverb).mp3.mpeg" type="audio/mpeg">
+</audio>
+
+<div class="content" id="mainContent">
+
+    <h1>SHAKE — Твой личный тренер</h1>
+
+    <p>
+        Место силы:
+        <strong>Фитнес-зал "Колизей"</strong>
+    </p>
+
+    <!-- Фотография -->
+    <img
+        src="https://raw.githubusercontent.com/kolizeygym/pjhpto/1d14245ae770e5eb6e291582ac5a0257f99f443b/WhatsApp%20Image%202026-06-13%20at%2022.22.50.jpeg"
+        alt="SHAKE"
+        class="photo"
+    >
+
+    <!-- Видео -->
+    <video controls autoplay muted loop playsinline>
+        <source src="https://raw.githubusercontent.com/kolizeygym/ldd/b78ce8cd90f12eaf6233fc59d249990ddb7e0222/WhatsApp%20Video%202026-06-13%20at%2022.22.47.mp4" type="video/mp4">
+        Твой браузер не поддерживает видео.
+    </video>
+
+    <div class="price">
+        <ul style="list-style:none;padding:0;">
+            <li>🏋️ Индивидуальные тренировки: <strong>40 000 ₸</strong></li>
+            <li>👥 Групповые тренировки: <strong>20 000 ₸</strong></li>
+            <li>💻 Онлайн-курс: <strong>20 000 ₸</strong> (включает план питания, программу и поддержку)</li>
+            <li>🏢 Абонемент зала: <strong>12 000 ₸</strong> (оплачивается отдельно)</li>
+        </ul>
+    </div>
+
+    <p>
+        <strong>🔥 За 3 месяца:</strong>
+        минус 20 кг жира, плюс 10 кг мышц.
+        <br>
+        Научный подход, проверенные методики и результат при соблюдении плана.
+    </p>
+
+    <p>
+        📲
+        <a href="https://t.me/shake1_bot" target="_blank">
+            Онлайн-бот: Прокачка ягодиц
+        </a>
+        <br><br>
+
+        💬
+        <a href="https://wa.me/77058501314" target="_blank">
+            WhatsApp — Записаться
+        </a>
+    </p>
+
+</div>
+
+<script>
+function startSite() {
+    document.querySelector(".start-screen").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+
+    const music = document.getElementById("bg-music");
+    // Попытка автоматически воспроизвести музыку
+    music.play().catch(function(error){
+        console.log("Автовоспроизведение заблокировано браузером: ", error);
+        // Здесь можно добавить видимую кнопку для включения музыки, если нужно
+    });
+}
+</script>
+
+</body>
+</html>
